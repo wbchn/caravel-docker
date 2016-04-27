@@ -1,15 +1,19 @@
 #!/bin/bash
 
-if [ ! -f /panoramix/panoramix.db ]; then
+export PYTHONPATH=/caravel:$PYTHONPATH
+
+if [ ! -f /caravel/caravel.db ]; then
 # Create an admin user
-fabmanager create-admin --app panoramix --username "$username" --password "$password" --firstname "$firstname" --lastname "$lastname" --email "$email"
+fabmanager create-admin --app caravel --username "$username" --password "$password" --firstname "$firstname" --lastname "$lastname" --email "$email"
 
 # Initialize the database
-panoramix db upgrade
+caravel db upgrade
 
 # Create default roles and permissions
-panoramix init
+caravel init
+
+# Load some data to play with
+caravel load_examples
 fi
 
-export PYTHONPATH=/panoramix:$PYTHONPATH
-panoramix runserver
+caravel runserver
