@@ -1,8 +1,7 @@
 FROM python:2.7.10
 
 # Install caravel
-#RUN pip install caravel -i http://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com
-RUN pip install caravel -i https://pypi.mirrors.ustc.edu.cn/simple
+RUN pip install caravel
 
 # Create an admin user env
 ENV username admin
